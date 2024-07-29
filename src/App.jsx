@@ -46,11 +46,14 @@ function App() {
         const rowsAsArrays = []
         rows.forEach((row) => {
             const cells = row.querySelectorAll('td')
-            const rowData = []
-            cells.forEach(cell => {
-                rowData.push(cell.textContent)
-            })
-            rowsAsArrays.push(rowData)
+            if (cells.length) {
+                const rowData = [
+                    cells[1].textContent.split('-')[0].trim().split('(')[0].trim(),
+                    cells[3].textContent.split(' ')[0],
+                    cells[6].textContent
+                ]
+                rowsAsArrays.push(rowData)
+            }
         })
         const finalIdsData = dataArrayToIdObj(rowsAsArrays)
         setTableData(finalIdsData)
