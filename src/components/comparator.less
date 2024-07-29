@@ -1,6 +1,6 @@
 .comparator-wrapper {
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
   border-radius: 4px;
   //background-color: #ffffff;
     //&.diff {
@@ -12,4 +12,27 @@
     //&.same {
     //  background-color: rgba(88, 196, 55, 0.5);
     //}
+  .diff-cell {
+    padding: 0.25rem 0.45rem;
+    font-weight: 500;
+    border-radius: 0.25rem;
+    font-size: 0.75em;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    width: fit-content;
+    &.diff {
+      color: #fb4e58;
+      background-color: #fedcde;
+    }
+    &.partial {
+      color: #ff9703;
+      background-color: #ffeacd;
+    }
+    &.same {
+      color: #58c437;
+      background-color: #def3d7;
+    }
+  }
 }

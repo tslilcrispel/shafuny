@@ -40,6 +40,22 @@ function Comparator({ csvData, tableData }) {
         diffObjCreator()
     }, [diffObjCreator])
 
+    const diffCellRenderer = ({ value }) => {
+        const classes = `diff-cell ${value}`
+        return (
+            <div className={classes}>
+                {value}
+            </div>
+        )
+    }
+
+    const numberValueGetter = ({ column, data }) => {
+        if (data[column.colId] === '') {
+            return null
+        }
+        return Number(data[column.colId])
+    }
+
     const colsDefs = [
         {
             field: 'part1'
@@ -48,13 +64,18 @@ function Comparator({ csvData, tableData }) {
             field: 'part2'
         },
         {
-            field: 'tableAmount'
+            field: 'tableAmount',
+            cellDataType: 'number',
+            valueGetter: numberValueGetter
         },
         {
-            field: 'csvAmount'
+            field: 'csvAmount',
+            cellDataType: 'number',
+            valueGetter: numberValueGetter
         },
         {
-            field: 'diff'
+            field: 'diff',
+            cellRenderer: diffCellRenderer
         }
     ]
 

@@ -78,9 +78,6 @@ function App() {
             {
                 csvData && tableData ? (
                     <div className='results-wrapper'>
-                        <div>
-                            Results
-                        </div>
                         <Comparator
                             csvData={csvData}
                             tableData={tableData}

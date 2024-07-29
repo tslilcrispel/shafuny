@@ -1,8 +1,6 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
 .inputs-wrapper {
@@ -13,6 +11,9 @@
 
 .app {
   padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   .results-wrapper {
     display: flex;
     flex-direction: column;

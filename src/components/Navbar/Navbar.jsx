@@ -6,7 +6,7 @@ function Navbar () {
         <div className='navbar-wrapper'>
             <div className='logo'>
                 <img src={logo} alt='logo' />
-                Shufuny
+                Shafuny
             </div>
         </div>
     )
