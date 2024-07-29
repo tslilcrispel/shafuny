@@ -1,6 +1,9 @@
 import {useCallback, useEffect, useState} from 'react'
 import { destructID } from "../utils.js"
+import {AgGridReact} from "ag-grid-react"
 
+import "ag-grid-community/styles/ag-grid.css"
+import "ag-grid-community/styles/ag-theme-quartz.css"
 import './comparator.less'
 
 const DIFF_VALUES = {
@@ -30,7 +33,6 @@ function Comparator({ csvData, tableData }) {
                 finalData.push(newObjForData)
             }
         })
-        console.log(finalData)
         setDiffResult(finalData)
     }, [csvData, tableData])
 
@@ -38,31 +40,35 @@ function Comparator({ csvData, tableData }) {
         diffObjCreator()
     }, [diffObjCreator])
 
-    const diffResultCards = useCallback(() => {
-        return diffResult.map(({ part1, part2, tableAmount, csvAmount, diff }) => {
-            const classes = `comparator-row ${diff}`
-            return (
-                <div className={classes}>
-                    <div>
-                        {part1}
-                    </div>
-                    <div>
-                        {part2}
-                    </div>
-                    <div>
-                        {tableAmount}
-                    </div>
-                    <div>
-                        {csvAmount}
-                    </div>
-                </div>
-            )
-        })
-    }, [diffResult])
+    const colsDefs = [
+        {
+            field: 'part1'
+        },
+        {
+            field: 'part2'
+        },
+        {
+            field: 'tableAmount'
+        },
+        {
+            field: 'csvAmount'
+        },
+        {
+            field: 'diff'
+        }
+    ]
 
     return (
-        <div className='comparator-wrapper'>
-            {diffResultCards()}
+        <div className='comparator-wrapper ag-theme-quartz'>
+            <AgGridReact
+                rowData={diffResult}
+                columnDefs={colsDefs}
+                gridOptions={{
+                    domLayout: 'autoHeight',
+                    animateRows: false,
+                    autoSizeStrategy: 'SizeColumnsToFitGridStrategy '
+                }}
+            />
         </div>
     )
 }
