@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import Comparator from "./components/Comparator.jsx"
 import { createItemId } from "./utils.js"
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 const dict = {
     header1: 'ba',
@@ -57,31 +58,38 @@ function App() {
 
 
   return (
-    <div>
-        <div>
-            Shafan Helper
+    <>
+        <Navbar />
+        <div className='app'>
+            <div className='inputs-wrapper'>
+                <div>
+                    <div>
+                        Tbody text here
+                    </div>
+                    <textarea onChange={handleTbody}/>
+                </div>
+                <div>
+                    <div>
+                        CSV file Here
+                    </div>
+                    <input onChange={readCSV} type='file' accept='.csv'/>
+                </div>
+            </div>
+            {
+                csvData && tableData ? (
+                    <div className='results-wrapper'>
+                        <div>
+                            Results
+                        </div>
+                        <Comparator
+                            csvData={csvData}
+                            tableData={tableData}
+                        />
+                    </div>
+                ) : null
+            }
         </div>
-      <div>
-        <div>
-          Tbody text here
-        </div>
-        <textarea onChange={handleTbody} />
-      </div>
-      <div>
-        <div>
-          CSV file Here
-        </div>
-        <input onChange={readCSV} type='file' accept='.csv'/>
-      </div>
-        {
-            csvData && tableData ? (
-                <Comparator
-                    csvData={csvData}
-                    tableData={tableData}
-                />
-            ) : null
-        }
-    </div>
+    </>
   )
 }
 

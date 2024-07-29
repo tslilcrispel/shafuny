@@ -4,3 +4,17 @@
   padding: 2rem;
   text-align: center;
 }
+
+.inputs-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.app {
+  padding-top: 4rem;
+  .results-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
