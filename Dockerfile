@@ -16,4 +16,4 @@ EXPOSE 8080
 RUN npm run build
 
 # Start the application
-CMD ["npm", "preview"]
+CMD ["npm", "run", "preview"]
