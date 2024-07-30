@@ -15,6 +15,11 @@ const DIFF_VALUES = {
 function Comparator({ csvData, tableData }) {
     const [diffResult, setDiffResult] = useState([])
 
+    const getCleanNumber = (value) => {
+        const valueWithNoPsik = value.split(',').join('')
+        return Number(removeDecimalPointIfNotNeeded(valueWithNoPsik))
+    }
+
     const diffObjCreator = useCallback(() => {
         const finalData = []
         Object.entries(tableData).forEach(([id, amount]) => {
@@ -22,7 +27,7 @@ function Comparator({ csvData, tableData }) {
             const newObjForData = { part1, part2, tableAmount: amount, csvAmount: '', diff: DIFF_VALUES.PART }
             if (csvData[id]) {
                 newObjForData.csvAmount = csvData[id]
-                newObjForData.diff = newObjForData.tableAmount === newObjForData.csvAmount ? DIFF_VALUES.SAME : DIFF_VALUES.DIFF
+                newObjForData.diff = getCleanNumber(newObjForData.tableAmount) === getCleanNumber(newObjForData.csvAmount) ? DIFF_VALUES.SAME : DIFF_VALUES.DIFF
                 console.log(newObjForData)
             }
             finalData.push(newObjForData)
@@ -63,11 +68,7 @@ function Comparator({ csvData, tableData }) {
         if (!value && value !== 0) {
             return null
         }
-        const valueWithNoPsik = value.split(',').join('')
-        console.log(valueWithNoPsik)
-        console.log(removeDecimalPointIfNotNeeded(valueWithNoPsik))
-        console.log(Number(removeDecimalPointIfNotNeeded(valueWithNoPsik)))
-        return Number(removeDecimalPointIfNotNeeded(valueWithNoPsik))
+        return getCleanNumber(value)
     }
 
     const colsDefs = [
