@@ -64,6 +64,9 @@ function Comparator({ csvData, tableData }) {
             return null
         }
         const valueWithNoPsik = value.split(',').join('')
+        console.log(valueWithNoPsik)
+        console.log(removeDecimalPointIfNotNeeded(valueWithNoPsik))
+        console.log(Number(removeDecimalPointIfNotNeeded(valueWithNoPsik)))
         return Number(removeDecimalPointIfNotNeeded(valueWithNoPsik))
     }
 
