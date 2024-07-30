@@ -5,12 +5,6 @@ import Comparator from "./components/Comparator.jsx"
 import { createItemId } from "./utils.js"
 import Navbar from "./components/Navbar/Navbar.jsx";
 
-const dict = {
-    header1: 'ba',
-    header2: 'ba2',
-    header3: 'ba3'
-}
-
 function App() {
   const [csvData, setCsvData] = useState(null)
   const [tableData, setTableData] = useState(null)

@@ -23,6 +23,7 @@ function Comparator({ csvData, tableData }) {
             if (csvData[id]) {
                 newObjForData.csvAmount = csvData[id]
                 newObjForData.diff = newObjForData.tableAmount === newObjForData.csvAmount ? DIFF_VALUES.SAME : DIFF_VALUES.DIFF
+                console.log(newObjForData)
             }
             finalData.push(newObjForData)
         })
