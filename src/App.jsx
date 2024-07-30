@@ -30,7 +30,7 @@ function App() {
         const reader = new FileReader()
         reader.addEventListener('load', function(e) {
             let fileContents = e.target.result
-            const csvData = Papa.parse(fileContents)
+            const csvData = Papa.parse(fileContents, { transform: (val) => val?.trim() })
             const finalIdsData = dataArrayToIdObj(csvData.data)
             setCsvData(finalIdsData)
         })
