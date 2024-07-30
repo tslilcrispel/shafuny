@@ -51,7 +51,7 @@ function Comparator({ csvData, tableData }) {
 
     const numberValueGetter = ({ column, data }) => {
         const value = data[column.colId]
-        if (value === '') {
+        if (!value && value !== 0) {
             return null
         }
         const valueWithNoPsik = value.split(',').join('')
