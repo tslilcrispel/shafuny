@@ -50,13 +50,21 @@ function Comparator({ csvData, tableData }) {
         )
     }
 
+    const removeDecimalPointIfNotNeeded = (numb) => {
+        const [fullNumber, afterDecimal] = numb.split('.')
+        if (Number(afterDecimal) === 0) {
+            return fullNumber
+        }
+        return numb
+    }
+
     const numberValueGetter = ({ column, data }) => {
         const value = data[column.colId]
         if (!value && value !== 0) {
             return null
         }
         const valueWithNoPsik = value.split(',').join('')
-        return Number(valueWithNoPsik)
+        return Number(removeDecimalPointIfNotNeeded(valueWithNoPsik))
     }
 
     const colsDefs = [
