@@ -1,8 +1,37 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
   color: #222c3c;
   background-color: #eef1f7;
+}
+
+body {
+    margin: 0;
+    --ag-wrapper-border-radius: 4px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 7px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+input[type=file] {
+    border: 1px solid #e7edf3;
+    border-radius: 4px;
+}
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #8375ff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    filter: brightness(1.1);
 }

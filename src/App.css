@@ -1,12 +1,13 @@
 #root {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
 }
 
 .inputs-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+align-items: center;
+gap: 30px;
 }
 
 .app {
@@ -17,5 +18,6 @@
   .results-wrapper {
     display: flex;
     flex-direction: column;
+     padding: 0px;
   }
 }

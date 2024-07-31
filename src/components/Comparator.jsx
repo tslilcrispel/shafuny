@@ -102,7 +102,11 @@ function Comparator({ csvData, tableData }) {
                 gridOptions={{
                     domLayout: 'autoHeight',
                     animateRows: false,
-                    autoSizeStrategy: 'SizeColumnsToFitGridStrategy '
+                    autoSizeStrategy: 'SizeColumnsToFitGridStrategy',
+                    defaultColDef: {
+                      filter: true,
+                      floatingFilter: true
+                    }
                 }}
             />
         </div>

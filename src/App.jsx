@@ -58,7 +58,7 @@ function App() {
     <>
         <Navbar />
         <div className='app'>
-            <div className='inputs-wrapper'>
+            <div className='inputs-wrapper card'>
                 <div>
                     <div>
                         Tbody text here
@@ -74,7 +74,7 @@ function App() {
             </div>
             {
                 csvData && tableData ? (
-                    <div className='results-wrapper'>
+                    <div className='results-wrapper card'>
                         <Comparator
                             csvData={csvData}
                             tableData={tableData}
