@@ -42,6 +42,9 @@ function Comparator({ csvData, tableData }) {
                 newObjForData.csvAmount = csvData[id]
                 totalCsv = sumNumbersInTable(totalCsv, csvData[id])
                 newObjForData.diff = getCleanNumber(newObjForData.tableAmount) === getCleanNumber(newObjForData.csvAmount) ? DIFF_VALUES.SAME : DIFF_VALUES.DIFF
+                if (newObjForData.diff === DIFF_VALUES.DIFF) {
+                    newObjForData.diffValue = getCleanNumber(newObjForData.tableAmount) - getCleanNumber(newObjForData.csvAmount)
+                }
                 console.log(newObjForData)
             }
             finalData.push(newObjForData)
@@ -124,6 +127,9 @@ function Comparator({ csvData, tableData }) {
         {
             field: 'diff',
             cellRenderer: diffCellRenderer
+        },
+        {
+            field: 'diffValue'
         }
     ]
 
