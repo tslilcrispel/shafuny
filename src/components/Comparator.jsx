@@ -121,6 +121,15 @@ function Comparator({ csvData, tableData }) {
                     rowSelection: 'multiple',
                     suppressRowClickSelection: true,
                     autoSizeStrategy: 'SizeColumnsToFitGridStrategy',
+                    onFirstDataRendered: (params) => {
+                        const nodesToSelect = []
+                        params.api.forEachNode((node) => {
+                            if (node?.data?.diff === DIFF_VALUES.SAME) {
+                                nodesToSelect.push(node)
+                            }
+                        });
+                        params.api.setNodesSelected({ nodes: nodesToSelect, newValue: true });
+                    },
                     defaultColDef: {
                       filter: true,
                       floatingFilter: true
