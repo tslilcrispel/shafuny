@@ -1,14 +1,15 @@
 const ID_SEPARATOR = '<<>>'
 
 const DICTIONARY = {
-    'I.R.R.': 'IRR',
+    'i.r.r.': 'IRR',
     'red team-cyber posture': 'red team',
-    'governance &strategy': 'governance & strategy'
+    'governance &strategy': 'governance & strategy',
+    'xdr': 'Velocity license'
 }
 
-export const createItemId = (part1, part2) => {
-    const part1AfterDict = DICTIONARY[part1] || part1 || ''
-    const part2AfterDict = DICTIONARY[part2] || part2 || ''
+export const createItemId = (part1 = '', part2 = '') => {
+    const part1AfterDict = DICTIONARY[part1.toLowerCase()] || part1
+    const part2AfterDict = DICTIONARY[part2.toLowerCase()] || part2
     return `${part1AfterDict.toLowerCase()}${ID_SEPARATOR}${part2AfterDict.toLowerCase()}`
 }
 
