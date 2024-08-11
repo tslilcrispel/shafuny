@@ -20,7 +20,7 @@ function App() {
           if (index !== 0) {
               const newID = createItemId(part1, part2)
               if (acc[newID]) {
-                  acc[`newID${index}`] = amount
+                  acc[`${newID}${index}`] = amount
               } else {
                   acc[newID] = amount
               }
