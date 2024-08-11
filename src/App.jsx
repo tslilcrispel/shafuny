@@ -2,7 +2,7 @@ import Papa from 'papaparse'
 import { useState } from 'react'
 import './App.css'
 import Comparator from "./components/Comparator.jsx"
-import { createItemId } from "./utils.js"
+import {createItemId, EXTRA_LINE_ADDON} from "./utils.js"
 import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           if (index !== 0) {
               const newID = createItemId(part1, part2)
               if (acc[newID]) {
-                  acc[`${newID}${index}`] = amount
+                  acc[`${newID}${EXTRA_LINE_ADDON}${index}`] = amount
               } else {
                   acc[newID] = amount
               }

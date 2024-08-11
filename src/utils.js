@@ -9,6 +9,8 @@ const DICTIONARY = {
     'professional services': 'cloud'
 }
 
+export const EXTRA_LINE_ADDON = '##'
+
 export const createItemId = (part1 = '', part2 = '') => {
     const part1AfterDict = DICTIONARY[part1.toLowerCase()] || part1
     const part2AfterDict = DICTIONARY[part2.toLowerCase()] || part2

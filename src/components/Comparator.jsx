@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react'
-import { destructID } from "../utils.js"
+import {destructID, EXTRA_LINE_ADDON} from "../utils.js"
 import {AgGridReact} from "ag-grid-react"
 
 import "ag-grid-community/styles/ag-grid.css"
@@ -87,7 +87,10 @@ function Comparator({ csvData, tableData }) {
             checkboxSelection: true
         },
         {
-            field: 'part2'
+            field: 'part2',
+            cellRenderer: (params) => {
+                return params.value.split(EXTRA_LINE_ADDON)[0]
+            }
         },
         {
             field: 'tableAmount',
