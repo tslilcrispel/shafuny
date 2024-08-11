@@ -43,7 +43,7 @@ function App() {
             if (cells.length) {
                 const rowData = [
                     cells[1].textContent.split('-')[0].trim().split('(')[0].trim(),
-                    cells[3].textContent.split(' ')[0],
+                    cells[3].textContent.split(' ')[0].trim(),
                     cells[6].textContent
                 ]
                 rowsAsArrays.push(rowData)
