@@ -129,7 +129,8 @@ function Comparator({ csvData, tableData }) {
             cellRenderer: diffCellRenderer
         },
         {
-            field: 'diffValue'
+            field: 'diffValue',
+            cellRenderer: numberCellRenderer
         }
     ]
 
