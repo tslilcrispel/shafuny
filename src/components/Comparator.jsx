@@ -73,7 +73,8 @@ function Comparator({ csvData, tableData }) {
 
     const colsDefs = [
         {
-            field: 'part1'
+            field: 'part1',
+            checkboxSelection: true
         },
         {
             field: 'part2'
@@ -102,6 +103,8 @@ function Comparator({ csvData, tableData }) {
                 gridOptions={{
                     domLayout: 'autoHeight',
                     animateRows: false,
+                    rowSelection: 'multiple',
+                    suppressRowClickSelection: true,
                     autoSizeStrategy: 'SizeColumnsToFitGridStrategy',
                     defaultColDef: {
                       filter: true,
