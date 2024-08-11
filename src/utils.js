@@ -2,7 +2,8 @@ const ID_SEPARATOR = '<<>>'
 
 const DICTIONARY = {
     'I.R.R.': 'IRR',
-    'red team-cyber posture': 'red team'
+    'red team-cyber posture': 'red team',
+    'governance &strategy': 'governance & strategy'
 }
 
 export const createItemId = (part1, part2) => {
