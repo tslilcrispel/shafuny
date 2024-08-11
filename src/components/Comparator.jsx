@@ -14,19 +14,33 @@ const DIFF_VALUES = {
 
 function Comparator({ csvData, tableData }) {
     const [diffResult, setDiffResult] = useState([])
+    const [csvTotal, setCsvTotal] = useState(0)
+    const [tableTotal, setTableTotal] = useState(0)
 
     const getCleanNumber = (value = '') => {
         const valueWithNoPsik = value.split(',').join('')
         return Number(removeDecimalPointIfNotNeeded(valueWithNoPsik))
     }
 
+    const sumNumbersInTable = (num1, num2) => {
+        const num2Clean = getCleanNumber(num2)
+        if (isNaN(num2Clean)) {
+            return num1
+        }
+        return num1 + num2Clean
+    }
+
     const diffObjCreator = useCallback(() => {
         const finalData = []
+        let totalCsv = 0
+        let totalTable = 0
         Object.entries(tableData).forEach(([id, amount]) => {
             const { part1, part2 } = destructID(id)
             const newObjForData = { part1, part2, tableAmount: amount, csvAmount: '', diff: DIFF_VALUES.PART }
+            totalTable = sumNumbersInTable(totalTable, amount)
             if (csvData[id]) {
                 newObjForData.csvAmount = csvData[id]
+                totalCsv = sumNumbersInTable(totalCsv, csvData[id])
                 newObjForData.diff = getCleanNumber(newObjForData.tableAmount) === getCleanNumber(newObjForData.csvAmount) ? DIFF_VALUES.SAME : DIFF_VALUES.DIFF
                 console.log(newObjForData)
             }
@@ -35,10 +49,13 @@ function Comparator({ csvData, tableData }) {
         Object.entries(csvData).forEach(([id, amount]) => {
             if (!tableData[id]) {
                 const { part1, part2 } = destructID(id)
+                totalCsv = sumNumbersInTable(totalCsv, csvData[id])
                 const newObjForData = { part1, part2, tableAmount: '', csvAmount: amount, diff: DIFF_VALUES.PART }
                 finalData.push(newObjForData)
             }
         })
+        setCsvTotal(totalCsv)
+        setTableTotal(totalTable)
         setDiffResult(finalData)
     }, [csvData, tableData])
 
@@ -112,6 +129,20 @@ function Comparator({ csvData, tableData }) {
 
     return (
         <div className='comparator-wrapper ag-theme-quartz'>
+            <div className='totals-wrapper'>
+                <div className='specific-total'>
+                    Total Table:
+                    <span>
+                        {tableTotal.toLocaleString()}
+                    </span>
+                </div>
+                <div className='specific-total'>
+                    Total Csv:
+                    <span>
+                        {csvTotal.toLocaleString()}
+                    </span>
+                </div>
+            </div>
             <AgGridReact
                 rowData={diffResult}
                 columnDefs={colsDefs}
