@@ -49,7 +49,7 @@ function App() {
                 const rowData = [
                     cells[multipleTable ? 2 : 1].textContent.split('-')[0].trim().split('(')[0].trim(),
                     cells[multipleTable ? 4 : 3].textContent.split(' ')[0].trim(),
-                    cells[multipleTable ? 5 : 6].textContent
+                    cells[multipleTable ? 7 : 6].textContent
                 ]
                 rowsAsArrays.push(rowData)
             }
