@@ -71,6 +71,16 @@ function Comparator({ csvData, tableData }) {
         return getCleanNumber(value)
     }
 
+    const numberCellRenderer = (params) => {
+        const valueAsNumber = parseFloat(params.value)
+        if (isNaN(valueAsNumber)) {
+            const {colId} = params.column
+            const realValue = params.data[colId]
+            return realValue
+        }
+        return valueAsNumber.toLocaleString()
+    }
+
     const colsDefs = [
         {
             field: 'part1',
@@ -82,12 +92,14 @@ function Comparator({ csvData, tableData }) {
         {
             field: 'tableAmount',
             cellDataType: 'number',
-            valueGetter: numberValueGetter
+            valueGetter: numberValueGetter,
+            cellRenderer: numberCellRenderer
         },
         {
             field: 'csvAmount',
             cellDataType: 'number',
-            valueGetter: numberValueGetter
+            valueGetter: numberValueGetter,
+            cellRenderer: numberCellRenderer
         },
         {
             field: 'diff',

@@ -4,7 +4,9 @@ const DICTIONARY = {
     'i.r.r.': 'IRR',
     'red team-cyber posture': 'red team',
     'governance &strategy': 'governance & strategy',
-    'xdr': 'Velocity license'
+    'xdr': 'Velocity license',
+    'income travel expenses 400255': 'travel',
+    'professional services': 'cloud'
 }
 
 export const createItemId = (part1 = '', part2 = '') => {
