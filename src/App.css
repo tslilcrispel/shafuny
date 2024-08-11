@@ -6,8 +6,12 @@
 .inputs-wrapper {
   display: flex;
   flex-direction: row;
-align-items: center;
-gap: 30px;
+  align-items: center;
+  gap: 30px;
+  .tbody-wrapper{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .app {

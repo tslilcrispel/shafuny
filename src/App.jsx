@@ -8,6 +8,11 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 function App() {
   const [csvData, setCsvData] = useState(null)
   const [tableData, setTableData] = useState(null)
+  const [multipleTable, setMultipleTable] = useState(false)
+
+    const multipleTableHandle = (e) => {
+        setMultipleTable(e.target.checked)
+    }
 
     const dataArrayToIdObj = (arr) => {
       return arr.reduce((acc, row, index) => {
@@ -42,9 +47,9 @@ function App() {
             const cells = row.querySelectorAll('td')
             if (cells.length) {
                 const rowData = [
-                    cells[1].textContent.split('-')[0].trim().split('(')[0].trim(),
-                    cells[3].textContent.split(' ')[0].trim(),
-                    cells[6].textContent
+                    cells[multipleTable ? 2 : 1].textContent.split('-')[0].trim().split('(')[0].trim(),
+                    cells[multipleTable ? 4 : 3].textContent.split(' ')[0].trim(),
+                    cells[multipleTable ? 5 : 6].textContent
                 ]
                 rowsAsArrays.push(rowData)
             }
@@ -59,15 +64,19 @@ function App() {
         <Navbar />
         <div className='app'>
             <div className='inputs-wrapper card'>
-                <div>
+                <div className='tbody-wrapper'>
                     <div>
                         Tbody text here
                     </div>
                     <textarea onChange={handleTbody}/>
+                    <div>
+                        <input type='checkbox' onChange={multipleTableHandle} value={multipleTable}/>
+                        Multiple Tables
+                    </div>
                 </div>
                 <div>
                     <div>
-                        CSV file Here
+                    CSV file Here
                     </div>
                     <input onChange={readCSV} type='file' accept='.csv'/>
                 </div>
