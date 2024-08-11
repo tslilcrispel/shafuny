@@ -15,7 +15,7 @@ const DIFF_VALUES = {
 function Comparator({ csvData, tableData }) {
     const [diffResult, setDiffResult] = useState([])
 
-    const getCleanNumber = (value) => {
+    const getCleanNumber = (value = '') => {
         const valueWithNoPsik = value.split(',').join('')
         return Number(removeDecimalPointIfNotNeeded(valueWithNoPsik))
     }
