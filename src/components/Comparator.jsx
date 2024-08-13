@@ -149,30 +149,36 @@ function Comparator({ csvData, tableData }) {
                         {csvTotal.toLocaleString()}
                     </span>
                 </div>
-            </div>
-            <AgGridReact
-                rowData={diffResult}
-                columnDefs={colsDefs}
-                gridOptions={{
-                    domLayout: 'autoHeight',
-                    animateRows: false,
-                    rowSelection: 'multiple',
-                    suppressRowClickSelection: true,
-                    autoSizeStrategy: 'SizeColumnsToFitGridStrategy',
-                    onFirstDataRendered: (params) => {
-                        const nodesToSelect = []
-                        params.api.forEachNode((node) => {
-                            if (node?.data?.diff === DIFF_VALUES.SAME) {
-                                nodesToSelect.push(node)
-                            }
-                        });
-                        params.api.setNodesSelected({ nodes: nodesToSelect, newValue: true });
-                    },
-                    defaultColDef: {
-                      filter: true,
-                      floatingFilter: true
-                    }
-                }}
+                <div className='specific-total'>
+                  Total diff:
+                  <span>
+                        {(tableTotal - csvTotal).toLocaleString()}
+                  </span>
+                </div>
+          </div>
+          <AgGridReact
+            rowData={diffResult}
+            columnDefs={colsDefs}
+            gridOptions={{
+              domLayout: 'autoHeight',
+              animateRows: false,
+              rowSelection: 'multiple',
+              suppressRowClickSelection: true,
+              autoSizeStrategy: 'SizeColumnsToFitGridStrategy',
+              onFirstDataRendered: (params) => {
+                  const nodesToSelect = []
+                  params.api.forEachNode((node) => {
+                      if (node?.data?.diff === DIFF_VALUES.SAME) {
+                          nodesToSelect.push(node)
+                      }
+                  });
+                  params.api.setNodesSelected({ nodes: nodesToSelect, newValue: true });
+              },
+              defaultColDef: {
+                filter: true,
+                floatingFilter: true
+              }
+          }}
             />
         </div>
     )
